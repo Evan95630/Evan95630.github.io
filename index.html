@@ -51,7 +51,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 2
 .premium-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
 .price-main{font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.02em}
 .price-old{font-size:13px;color:var(--text4);text-decoration:line-through;margin-left:5px}
-.btn-green{background:var(--green);color:#111;border:none;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:800;font-family:inherit;cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-green{background:var(--green);color:#111;border:none;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:800;font-family:inherit;cursor:pointer;transition:all .2s;white-space:nowrap;text-decoration:none;display:inline-block}
 .btn-green:hover{background:#6fe896;transform:translateY(-1px)}
 
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
@@ -71,18 +71,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 2
 .cprice{font-size:17px;font-weight:900;color:var(--text)}
 .cprice .old{font-size:11px;color:var(--text4);font-weight:400;text-decoration:line-through;margin-left:4px}
 
-.order-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:16px;padding:22px 24px}
-.order-card h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:14px}
-.sel-box{background:var(--bg3);border:1.5px solid var(--border2);border-radius:10px;padding:14px;font-size:13px;color:var(--text4);margin-bottom:14px;transition:all .2s}
-.sel-box.selected{color:var(--green);border-color:var(--green-border);background:var(--green-bg)}
-.flabel{display:block;font-size:11px;color:var(--text5);font-weight:600;margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em}
-.finput{width:100%;background:var(--bg3);border:1.5px solid var(--border2);border-radius:10px;padding:13px 14px;font-size:14px;color:var(--text);font-family:inherit;outline:none;margin-bottom:12px;transition:border-color .2s}
-.finput:focus{border-color:var(--green)}
-.submit-btn{width:100%;background:var(--text);color:#111;border:none;padding:15px;border-radius:10px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;margin-top:4px;margin-bottom:12px;transition:all .2s}
-.submit-btn:hover{background:#d0d0d0;transform:translateY(-1px)}
-.submit-btn:disabled{background:#444;color:#888;cursor:not-allowed;transform:none}
-.form-footer-row{text-align:center;font-size:11px;color:var(--text4);display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-
+/* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.open{display:flex}
 .modal{background:#1a1a1a;border:1.5px solid var(--border2);border-radius:18px;padding:26px;max-width:400px;width:100%;position:relative;animation:fadeUp .25s ease}
@@ -104,7 +93,6 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 2
   .price-main{font-size:22px}
   .thumb{height:100px;font-size:26px}
   .cdesc{display:none}
-  .order-card{padding:16px}
   nav{padding:14px 16px}
 }
 </style>
@@ -131,6 +119,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 2
 
 <hr class="hr">
 
+<!-- ACCOMPAGNEMENT PREMIUM -->
 <section class="section" id="premium">
   <div class="section-lbl">RECOMMANDÉ</div>
   <div class="section-title">L'offre premium</div>
@@ -146,55 +135,43 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 2
     </ul>
     <div class="premium-foot">
       <div><span class="price-main">49,99€</span><span class="price-old">95€</span></div>
-      <button class="btn-green" onclick="selectOffer('Coaching 1-1 + Groupe Privé — 49,99€')">Je veux ce suivi</button>
+      <a class="btn-green" href="https://shop.beacons.ai/evan_mrr/812e7d19-b6d5-4653-bc82-4a40c615bcef" target="_blank">Je veux ce suivi</a>
     </div>
   </div>
 </section>
 
 <hr class="hr">
 
+<!-- FORMATIONS -->
 <section class="section" id="formations">
   <div class="section-lbl">FORMATIONS DIGITALES</div>
   <div class="section-title">Toutes les formations</div>
   <div class="grid">
-    <div class="fcard" onclick="openModal('Digital Origin Community','97€','140€','Vends un produit clé en main OU crée le tien. Coaching individuel + groupe privé inclus.','FORMATION PHARE')">
+
+    <div class="fcard" onclick="openModal('Digital Origin Community','97€','140€','Vends un produit clé en main OU crée le tien. Coaching individuel + groupe privé inclus.','FORMATION PHARE','https://shop.beacons.ai/evan_mrr/e6260e65-9a38-47d4-b8ef-48d645e4f8b0')">
       <div class="thumb doc-bg">DOC<span class="mrr-b">MRR 100%</span><span class="ctag">Formation complète</span></div>
       <div class="cbody"><div class="ccat">FORMATION PHARE</div><div class="ctitle">Digital Origin Community</div><div class="cdesc">Vends un produit clé en main OU crée le tien. Coaching individuel + groupe privé inclus.</div><div class="cprice">97€ <span class="old">140€</span></div></div>
     </div>
-    <div class="fcard" onclick="openModal('CFS — Formation Marketing Digital','29,99€','49,99€','Génère des ventes avec TikTok, structure une offre irrésistible et scale rapidement.','TIKTOK & SCALING')">
+
+    <div class="fcard" onclick="openModal('CFS — Formation Marketing Digital','29,99€','49,99€','Génère des ventes avec TikTok, structure une offre irrésistible et scale rapidement.','TIKTOK & SCALING','https://shop.beacons.ai/evan_mrr/f3c27cc8-a483-4ac7-a59b-58852ff9e577')">
       <div class="thumb cfs-bg">CFS<span class="mrr-b">MRR 100%</span><span class="ctag">TikTok · Ventes</span></div>
       <div class="cbody"><div class="ccat">TIKTOK &amp; SCALING</div><div class="ctitle">CFS — Formation Marketing Digital</div><div class="cdesc">Génère des ventes avec TikTok, structure une offre irrésistible et scale rapidement.</div><div class="cprice">29,99€ <span class="old">49,99€</span></div></div>
     </div>
-    <div class="fcard" onclick="openModal('RCE Academy','55€','95€','Un parcours orienté action pour maîtriser le marketing digital de A à Z.','MARKETING DIGITAL')">
+
+    <div class="fcard" onclick="openModal('RCE Academy','55€','95€','Un parcours orienté action pour maîtriser le marketing digital de A à Z.','MARKETING DIGITAL','https://shop.beacons.ai/evan_mrr/d9b83b78-7dc6-4ce3-a5e9-4c0737e65cf9')">
       <div class="thumb rce-bg">RCE<span class="mrr-b">MRR 100%</span><span class="ctag">Parcours structuré</span></div>
       <div class="cbody"><div class="ccat">MARKETING DIGITAL</div><div class="ctitle">RCE Academy</div><div class="cdesc">Un parcours orienté action pour maîtriser le marketing digital de A à Z.</div><div class="cprice">55€ <span class="old">95€</span></div></div>
     </div>
-    <div class="fcard" onclick="openModal('Lead Marketing Handbook','17€','30€','Apprends le marketing digital ET revends la formation à 100% de profit.','MARKETING + REVENTE')">
+
+    <div class="fcard" onclick="openModal('Lead Marketing Handbook','17€','30€','Apprends le marketing digital ET revends la formation à 100% de profit.','MARKETING + REVENTE','https://shop.beacons.ai/evan_mrr/c19413d3-b06b-49b2-9d05-e03d159b48b8')">
       <div class="thumb lmh-bg">LMH<span class="mrr-b">MRR 100%</span><span class="ctag">Entrée parfaite</span></div>
       <div class="cbody"><div class="ccat">MARKETING + REVENTE</div><div class="ctitle">Lead Marketing Handbook</div><div class="cdesc">Apprends le marketing digital ET revends la formation à 100% de profit.</div><div class="cprice">17€ <span class="old">30€</span></div></div>
     </div>
+
   </div>
 </section>
 
-<hr class="hr">
-
-<section class="section" id="commande" style="padding-bottom:60px">
-  <div class="section-lbl-gray">ACCÈS IMMÉDIAT</div>
-  <div class="section-title">Finalisez votre commande</div>
-  <div class="order-card">
-    <h3>Votre sélection</h3>
-    <div class="sel-box" id="sel">Choisissez une formation ou l'accompagnement ci-dessus</div>
-    <label class="flabel">Prénom</label>
-    <input class="finput" id="prenom" type="text" placeholder="Marie" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-    <label class="flabel">Email</label>
-    <input class="finput" id="email" type="email" placeholder="marie@exemple.com" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-    <button class="submit-btn" id="submit-btn" onclick="submitForm()">Accéder maintenant</button>
-    <div class="form-footer-row">
-      <span>Paiement sécurisé</span><span>·</span><span>Email via Brevo</span><span>·</span><span>Garantie 14 jours</span>
-    </div>
-  </div>
-</section>
-
+<!-- MODAL -->
 <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">&#x2715;</button>
@@ -205,52 +182,24 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 2
       <span style="font-size:13px;color:#666;text-decoration:line-through" id="modal-old"></span>
     </div>
     <p style="font-size:13px;color:#999;line-height:1.6;margin-bottom:18px" id="modal-desc"></p>
-    <button class="btn-green" id="modal-cta" style="width:100%;padding:14px;font-size:15px">Choisir cette formation</button>
+    <a class="btn-green" id="modal-cta" style="width:100%;padding:14px;font-size:15px;text-align:center;display:block" href="#" target="_blank">Acheter maintenant</a>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-function selectOffer(name) {
-  var sel = document.getElementById('sel');
-  sel.textContent = name;
-  sel.classList.add('selected');
-  document.getElementById('commande').scrollIntoView({behavior:'smooth'});
-}
-function openModal(title, price, old, desc, badge) {
+function openModal(title, price, old, desc, badge, link) {
   document.getElementById('modal-badge').textContent = badge;
   document.getElementById('modal-title').textContent = title;
   document.getElementById('modal-price').textContent = price;
   document.getElementById('modal-old').textContent = old;
   document.getElementById('modal-desc').textContent = desc;
-  document.getElementById('modal-cta').onclick = function() {
-    closeModal();
-    selectOffer(title + ' — ' + price);
-  };
+  document.getElementById('modal-cta').href = link;
   document.getElementById('modal').classList.add('open');
 }
 function closeModal() { document.getElementById('modal').classList.remove('open'); }
 function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
-function showToast(msg) {
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 3000);
-}
-function submitForm() {
-  var prenom = document.getElementById('prenom').value.trim();
-  var email = document.getElementById('email').value.trim();
-  var sel = document.getElementById('sel').textContent;
-  if (!prenom) { showToast('Entrez votre prénom'); return; }
-  if (!email || email.indexOf('@') < 0) { showToast('Email invalide'); return; }
-  if (sel.indexOf('Choisissez') >= 0) { showToast('Choisissez une offre'); return; }
-  var btn = document.getElementById('submit-btn');
-  btn.textContent = 'Envoyé !';
-  btn.disabled = true;
-  showToast('Commande envoyée pour ' + prenom);
-  setTimeout(function(){ btn.textContent = 'Accéder maintenant'; btn.disabled = false; }, 3000);
-}
 </script>
 
 </body>
